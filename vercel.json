@@ -1,8 +1,10 @@
 {
     "version": 2,
-    "builds": [
-        { "src": "/server.php", "use": "vercel-php@0.7.4" }
-    ],
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.5"
+        }
+    },
     "routes": [
         {
             "src": "/(.*)",
@@ -10,17 +12,13 @@
         }
     ],
     "env": {
+        "APP_ENV": "production",
+        "APP_DEBUG": "false",
         "ASSET_URL": "/",
         "SESSION_DRIVER": "cookie",
-        "CACHE_DRIVER": "database",
+        "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENTS_CACHE": "/tmp/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/services.php",
         "VIEW_COMPILED_PATH": "/tmp/views",
-        "SSR_TEMP_PATH": "/tmp/ssr",
         "NODE_PATH": "node"
     }
 }
